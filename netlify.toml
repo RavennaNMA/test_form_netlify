@@ -1,0 +1,17 @@
+[functions]
+directory = "netlify/functions"
+
+[[plugins]]
+package = "@netlify/plugin-functions"
+
+[build]
+functions = "netlify/functions"
+
+[[redirects]]
+from = "/generateMarkdown"
+to = "/.netlify/functions/generateMarkdown"
+status = 200
+
+[[form]]
+name = "artworkForm"
+endpoint = "/.netlify/functions/generateMarkdown"
