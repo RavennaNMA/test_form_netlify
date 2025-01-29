@@ -47,7 +47,7 @@
   <h1>作品提交表單</h1>
 
   <!-- Netlify form -->
-  <form name="artworkForm" method="POST" data-netlify="true" enctype="multipart/form-data">
+  <form name="artworkForm" action="POST" data-netlify="true" enctype="multipart/form-data">
     
     <!-- Hidden input for Netlify -->
     <input type="hidden" name="form-name" value="artworkForm">
@@ -78,9 +78,6 @@
     <!-- 作品紀錄 -->
     <label for="recordLink1">作品紀錄（YouTube/Vimeo 預覽鏈接）＊</label>
     <input type="url" id="recordLink1" name="recordLink1" placeholder="https://youtube.com/... / vimeo.com" required>
-
-    <label for="recordLink2">第二條鏈接（可選）</label>
-    <input type="url" id="recordLink2" name="recordLink2" placeholder="https://youtube.com/... / vimeo.com">
 
     <!-- 時長 -->
     <label for="duration">時長（例如：5分鐘）</label>
@@ -115,6 +112,7 @@
     <label for="extraMessage">自由發揮留言</label>
     <textarea id="extraMessage" name="extraMessage" rows="4" placeholder="自由發揮"></textarea>
 
+    <div data-netlify-recaptcha="true"></div>
     <!-- 提交按鈕 -->
     <button type="submit">提交作品</button>
   </form>
