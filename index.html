@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作品提交表單</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin: 10px 0 5px;
+    }
+    input, textarea, select, button {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    textarea {
+      resize: vertical;
+    }
+    button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    p {
+      font-size: 12px;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+  <h1>作品提交表單</h1>
+
+  <!-- Netlify form -->
+  <form name="artworkForm" method="POST" data-netlify="true" enctype="multipart/form-data">
+    
+    <!-- Hidden input for Netlify -->
+    <input type="hidden" name="form-name" value="artworkForm">
+
+    <!-- 作品預覽圖 -->
+    <label for="previewImage">作品預覽圖（1MB以下圖片）＊</label>
+    <p>動態可自行壓成gif，靜態隨意，eg. jpg, png, gif</p>
+    <input type="file" id="previewImage" name="previewImage" accept="image/*" required>
+
+    <!-- 作品名字 -->
+    <label for="workNameCN">作品名字（中文）＊</label>
+    <input type="text" id="workNameCN" name="workNameCN" placeholder="中文名字" required>
+
+    <label for="workNameEN">作品名字（英文）＊</label>
+    <input type="text" id="workNameEN" name="workNameEN" placeholder="英文名字" required>
+
+    <!-- 作者名稱 -->
+    <label for="authorNameCN">作者名稱（中文）＊</label>
+    <input type="text" id="authorNameCN" name="authorNameCN" placeholder="中文名稱" required>
+
+    <label for="authorNameEN">作者名稱（英文）＊</label>
+    <input type="text" id="authorNameEN" name="authorNameEN" placeholder="英文名稱" required>
+
+    <!-- 年份 -->
+    <label for="year">年份 *</label>
+    <input type="number" id="year" name="year" placeholder="例如：2025" min="1990" max="2100" required>
+
+    <!-- 作品紀錄 -->
+    <label for="recordLink1">作品紀錄（YouTube/Vimeo 預覽鏈接）＊</label>
+    <input type="url" id="recordLink1" name="recordLink1" placeholder="https://youtube.com/... / vimeo.com" required>
+
+    <label for="recordLink2">第二條鏈接（可選）</label>
+    <input type="url" id="recordLink2" name="recordLink2" placeholder="https://youtube.com/... / vimeo.com">
+
+    <!-- 時長 -->
+    <label for="duration">時長（例如：5分鐘）</label>
+    <input type="text" id="duration" name="duration" placeholder="例如：5分鐘">
+
+    <!-- 媒材／類別 -->
+    <label for="mediaType">Tag＊</label>
+    <input type="text" id="mediaType" name="mediaType" placeholder="請輸入Tag" required>
+
+    <!-- 尺寸／空間 -->
+    <label for="dimensions">尺寸／空間</label>
+    <input type="text" id="dimensions" name="dimensions" placeholder="例如：10x10x10 cm">
+
+    <!-- 作品簡介 -->
+    <label for="description">作品簡介（20~300字）</label>
+    <textarea id="description" name="description" rows="4" placeholder="請輸入作品簡介" minlength="20" maxlength="300"></textarea>
+
+    <!-- 聯繫方式 -->
+    <label for="email">聯繫方式（Email）</label>
+    <input type="email" id="email" name="email" placeholder="example@domain.com">
+
+    <!-- 社交媒體 -->
+    <label for="socialMedia">社交媒體（例如 Instagram 或 GitHub）＊</label>
+    <input type="url" id="socialMedia" name="socialMedia" placeholder="https://..." required>
+    
+    <!-- 是否收錄在專題區 -->
+    <label for="specialCollection">是否收錄在專題區？</label>
+    <input type="checkbox" id="specialCollection" name="specialCollection" value="Yes">
+    <input type="text" id="classYear" name="classYear" placeholder="請輸入系級 (例如 112)">
+
+    <!-- 留言 -->
+    <label for="extraMessage">自由發揮留言</label>
+    <textarea id="extraMessage" name="extraMessage" rows="4" placeholder="自由發揮"></textarea>
+
+    <!-- 提交按鈕 -->
+    <button type="submit">提交作品</button>
+  </form>
+
+  <!-- Netlify JavaScript 防止大於1MB的圖片 -->
+  <script>
+    document.querySelector("form").addEventListener("submit", function(event) {
+      const fileInput = document.getElementById("previewImage");
+      if (fileInput.files.length > 0 && fileInput.files[0].size > 1 * 1024 * 1024) {
+        alert("圖片大小超過1MB，請重新上傳。");
+        event.preventDefault();
+      }
+    });
+  </script>
+
+</body>
+</html>
